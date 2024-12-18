@@ -2,6 +2,12 @@ import React from "react";
 import BackButton from "@/components/backButton";
 import { headers } from "next/headers";
 import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Categories | Hangman game",
+  description: "Choose any of the six categories",
+};
 
 interface Name {
   name: string;

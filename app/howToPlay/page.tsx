@@ -1,5 +1,11 @@
 import React from "react";
 import BackButton from "@/components/backButton";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "How To Play | Hangman game",
+  description: "Simple rules to play the game",
+};
 
 const Page = () => {
   return (

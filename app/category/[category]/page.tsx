@@ -6,15 +6,15 @@ import GameClient from "@/components/GameClient";
 export const generateMetadata = async ({
   params,
 }: {
-  params: { category: string };
+  params: Promise<{ category: string }>;
 }): Promise<Metadata> => {
   const { category } = await params;
   return {
-    title: `${category}`,
+    title: `${category} | Hangman game`,
   };
 };
 
-const Page = async ({ params }: { params: { category: string } }) => {
+const Page = async ({ params }: { params: Promise<{ category: string }> }) => {
   const host = (await headers()).get("host");
   const protocal = process?.env.NODE_ENV === "development" ? "http" : "https";
   const response = await fetch(`${protocal}://${host}/api`, {
