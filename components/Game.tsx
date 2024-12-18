@@ -26,7 +26,7 @@ export interface Name {
 let hiddenStr = "";
 
 const getHiddenWord = (word: string): string => {
-  hiddenStr = ''
+  hiddenStr = "";
   const new_word = word
     .split(" ")
     .map((e) => {
@@ -45,7 +45,7 @@ const getHiddenWord = (word: string): string => {
     })
     .join(" ");
 
-    return new_word;
+  return new_word;
 };
 
 function getHiddenKeys(word: string): string {
@@ -76,22 +76,17 @@ function CalculateHiddenIndexs(word: string): number[] {
 }
 
 const Game: React.FC<GameProps> = ({ category, selectedCategory }) => {
-
   const [word, setWord] = useState(shuffleArray(selectedCategory)[0].name);
-  const hiddenWord = getHiddenWord(word)
-  const [hiddenKeys, setHiddenKeys] = useState(
-    getHiddenKeys(hiddenWord),
-  );
+  const hiddenWord = getHiddenWord(word);
+  const [hiddenKeys, setHiddenKeys] = useState(getHiddenKeys(hiddenWord));
   const [hiddenIndexes, setHiddenIndexes] = useState(
-    CalculateHiddenIndexs(hiddenWord),
+    CalculateHiddenIndexs(hiddenWord)
   );
   const correctWord = word.split("");
   const keyBoard = "abcdefghi jklmnopqr stuvwxyz";
-  const [hiddenLetters, setHiddenLetters] = useState(
-    hiddenWord.split(""),
-  );
+  const [hiddenLetters, setHiddenLetters] = useState(hiddenWord.split(""));
   const [selectedBox, setSelectedBox] = useState(
-    Number(CalculateHiddenIndexs(hiddenWord)[0]),
+    Number(CalculateHiddenIndexs(hiddenWord)[0])
   );
   const [clickedKey, setClickedKey] = useState("");
   const [health, setHealth] = useState(8);
@@ -136,17 +131,24 @@ const Game: React.FC<GameProps> = ({ category, selectedCategory }) => {
         updatedHiddenLetters[selectedBox] = correctWord[selectedBox];
         return updatedHiddenLetters;
       });
+
       const updatedHiddenIndexes = hiddenIndexes.filter(
-        (e) => e !== selectedBox,
+        (e) => e !== selectedBox
       );
+
       const num = hiddenIndexes.filter(
-        (e) => e !== selectedBox && correctWord[e] === clickedKey,
+        (e) => e !== selectedBox && correctWord[e] === clickedKey
       );
-      num.length > 0
-        ? setHiddenKeys(hiddenKeys)
-        : setHiddenKeys(hiddenKeys + clickedKey);
+
+      if (num.length > 0) {
+        setHiddenKeys(hiddenKeys);
+      } else {
+        setHiddenKeys(hiddenKeys + clickedKey);
+      }
+
       setHiddenIndexes(updatedHiddenIndexes);
       setClickedKey("");
+
       if (updatedHiddenIndexes.length) {
         updateSelectedBoxPosition(selectedBox, hiddenIndexes);
       } else {
@@ -173,7 +175,7 @@ const Game: React.FC<GameProps> = ({ category, selectedCategory }) => {
 
   const updateSelectedBoxPosition = (
     currPos: number,
-    posArr: Array<number>,
+    posArr: Array<number>
   ): void => {
     const posInArr = posArr.indexOf(currPos);
     if (posInArr < posArr.length - 1) {
@@ -262,7 +264,7 @@ const Game: React.FC<GameProps> = ({ category, selectedCategory }) => {
           })}
       </main>
       <section className="flex flex-col gap-6 mt-20">
-        {keyBoard.split(" ").map((e,i) => (
+        {keyBoard.split(" ").map((e, i) => (
           <div className="flex justify-center gap-2" key={i}>
             {e.split("").map((l, i) => (
               <KeyboardButton
