@@ -18,7 +18,7 @@ export enum GameState {
   Paused = "Paused",
 }
 
-interface Name {
+export interface Name {
   name: string;
   selected: boolean;
 }
@@ -68,7 +68,7 @@ function shuffleArray<T>(array: T[]): T[] {
 }
 
 function CalculateHiddenIndexs(word: string): number[] {
-  let hiddenIndexes: number[] = [];
+  const hiddenIndexes: number[] = [];
   word.split("").forEach((e: string, i: number) => {
     if (e === "_") hiddenIndexes.push(i);
   });
@@ -78,7 +78,7 @@ function CalculateHiddenIndexs(word: string): number[] {
 const Game: React.FC<GameProps> = ({ category, selectedCategory }) => {
 
   const [word, setWord] = useState(shuffleArray(selectedCategory)[0].name);
-  const [hiddenWord, setHiddenword] = useState(getHiddenWord(word))
+  const hiddenWord = getHiddenWord(word)
   const [hiddenKeys, setHiddenKeys] = useState(
     getHiddenKeys(hiddenWord),
   );
@@ -175,7 +175,7 @@ const Game: React.FC<GameProps> = ({ category, selectedCategory }) => {
     currPos: number,
     posArr: Array<number>,
   ): void => {
-    let posInArr = posArr.indexOf(currPos);
+    const posInArr = posArr.indexOf(currPos);
     if (posInArr < posArr.length - 1) {
       setSelectedBox(posArr[posInArr + 1]);
     } else {

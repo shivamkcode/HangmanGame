@@ -17,7 +17,7 @@ export const generateMetadata = async ({
 const Page = async ({ params }: { params: { category: string } }) => {
   const host = (await headers()).get("host");
   const protocal = process?.env.NODE_ENV === "development" ? "http" : "https";
-  let response = await fetch(`${protocal}://${host}/api`, {
+  const response = await fetch(`${protocal}://${host}/api`, {
     cache: "no-store",
   });
   const data: Data = await response.json();

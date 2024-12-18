@@ -17,7 +17,7 @@ export interface Data {
 const Page = async () => {
   const host = (await headers()).get("host");
   const protocal = process?.env.NODE_ENV === "development" ? "http" : "https";
-  let response = await fetch(`${protocal}://${host}/api`, {
+  const response = await fetch(`${protocal}://${host}/api`, {
     cache: "no-store",
   });
   const data: Data = await response.json();
