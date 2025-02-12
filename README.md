@@ -22,6 +22,7 @@ Hangman is a classic word guessing game. This project is a web-based version dev
 - Responsive design with Tailwind CSS
 - Real-time word guessing
 - Health Tracking
+- Points Tracking
 
 ## Installation
 
@@ -98,4 +99,4 @@ Project Link: [https://github.com/shivamkcode/HangmanGame](https://github.com/sh
 
 The Hangman Game is live! You can play the game by visiting the deployed site at:
 
-[https://hangman-game-vert-eight.vercel.app/](https://hangman-game-vert-eight.vercel.app/)
+[https://hangman.heyshivam.tech/](https://hangman.heyshivam.tech/)

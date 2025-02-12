@@ -94,6 +94,7 @@ const Game: React.FC<GameProps> = ({ category, selectedCategory }) => {
   const [gameState, setGameState] = useState<GameState>(GameState.Playing);
   const gameStatusText = getGameStatusText(gameState);
   const [showCard, setShowCard] = useState(false);
+  const [points, setPoints] = useState(0);
 
   function getGameStatusText(gameState: GameState): string {
     switch (gameState) {
@@ -123,6 +124,21 @@ const Game: React.FC<GameProps> = ({ category, selectedCategory }) => {
     setGameState(GameState.Playing);
     setShowCard(false);
   }
+
+  function updatePoints(newPoints: number) {
+    setPoints((prevPoints) => {
+      const updatedPoints = prevPoints + newPoints;
+      localStorage.setItem("points", updatedPoints.toString());
+      return updatedPoints;
+    });
+  }
+
+  useEffect(() => {
+    const savedPoints = localStorage.getItem("points");
+    if (savedPoints) {
+      setPoints(parseInt(savedPoints));
+    }
+  }, []);
 
   useEffect(() => {
     if (clickedKey && correctWord[selectedBox]?.toLowerCase() === clickedKey) {
@@ -154,6 +170,7 @@ const Game: React.FC<GameProps> = ({ category, selectedCategory }) => {
       } else {
         setGameState(GameState.Won);
         setShowCard(true);
+        updatePoints(10);
       }
     } else if (
       clickedKey &&
@@ -162,6 +179,9 @@ const Game: React.FC<GameProps> = ({ category, selectedCategory }) => {
       if (health === 1) {
         setGameState(GameState.Lost);
         setShowCard(true);
+        if (points > 0) {
+          updatePoints(-5);
+        }
       }
       setHealth(health - 1);
       setClickedKey("");
@@ -193,7 +213,6 @@ const Game: React.FC<GameProps> = ({ category, selectedCategory }) => {
   };
 
   useLayoutEffect(() => {
-    // playGame();
     window.addEventListener("keydown", handleKeyAction);
     return () => {
       window.removeEventListener("keydown", handleKeyAction);
@@ -239,6 +258,14 @@ const Game: React.FC<GameProps> = ({ category, selectedCategory }) => {
             height={24}
             width={26}
           />
+          <div className="relative flex justify-center items-center">
+            <h1 className="text-shadow text-2xl sm:text-5xl">
+              {points}
+            </h1>
+            <h1 className="gradient-text absolute top-0 text-2xl sm:text-5xl">
+              {points}
+            </h1>
+          </div>
         </div>
       </header>
       <main className="flex justify-center gap-x-14 flex-wrap gap-3 mt-20 sm:mt-24 md:mt-20">

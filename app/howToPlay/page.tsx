@@ -9,16 +9,16 @@ export const metadata: Metadata = {
 
 const Page = () => {
   return (
-    <div className="pb-14 px-2 sm:px-4">
+    <div className="pb-14">
       <div className="bg-gradient-to-b from-[#1A043A] to-[#2B1677] fixed opacity-75 h-screen w-screen -z-50" />
-      <div className="container mx-auto">
+      <div className="container mx-auto  px-2 sm:px-4">
         <BackButton title={"How To Play"} />
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-8 mt-[60px] space-y-8 items-stretch lg:space-y-0">
-          <div className="bg-white px-6 py-8 md:px-12 md:py-[60px] lg:px-10  rounded-3xl tracking-wider lg:flex lg:flex-col lg:gap-8 desc-card">
-            <p className="text-blue text-2xl md:text-hl text-center md:col-start-1 md:col-end-1 md:row-start-1 md:row-end-3 md:self-center justify-self-start lg:mb-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 lg:gap-8 mt-[60px] space-y-8 items-stretch lg:space-y-0">
+          <div className="bg-white px-6 py-8 md:px-12 md:py-[60px] lg:px-10  rounded-3xl tracking-wider lg:flex lg:flex-col lg:gap-8 desc-card hover:scale-[101%]">
+            <p className="text-blue-500 text-2xl md:col-start-1 md:col-end-1 md:row-start-1 md:row-end-3 md:self-center justify-self-start lg:mb-10">
               01
             </p>
-            <p className="text-2xl text-start text-dark-navy uppercase lg:text-hm lg:text-center leading-[120%]">
+            <p className="text-2xl text-dark-navy uppercase mx-2 lg:text-center leading-[120%]">
               Choose a category
             </p>
             <p className="text-[#887DC0] text-base md:text-b leading-[150%] lg:mt-6 lg:text-center row-start-2 row-end-3 col-start-1 col-end-3 md:col-start-2 md:col-end-3 mt-2">
@@ -27,11 +27,11 @@ const Page = () => {
               shows you blanks for each letter of the word.
             </p>
           </div>
-          <div className="bg-white px-6 py-8 md:px-12 md:py-[60px] lg:px-10  rounded-3xl tracking-wider lg:flex lg:flex-col lg:gap-8 desc-card">
-            <p className="text-blue text-2xl md:text-hl text-center md:col-start-1 md:col-end-1 md:row-start-1 md:row-end-3 md:self-center justify-self-start lg:mb-10">
+          <div className="bg-white px-6 py-8 md:px-12 md:py-[60px] lg:px-10  rounded-3xl tracking-wider lg:flex lg:flex-col lg:gap-8 desc-card hover:scale-[101%]">
+            <p className="text-blue-500 text-2xl md:col-start-1 md:col-end-1 md:row-start-1 md:row-end-3 md:self-center justify-self-start lg:mb-10">
               02
             </p>
-            <p className="text-2xl text-start text-dark-navy uppercase lg:text-hm lg:text-center leading-[120%]">
+            <p className="text-2xl text-dark-navy uppercase mx-2 lg:text-center leading-[120%]">
               Guess the letters
             </p>
             <p className="text-[#887DC0] text-base md:text-b leading-[150%] lg:mt-6 lg:text-center row-start-2 row-end-3 col-start-1 col-end-3 md:col-start-2 md:col-end-3 mt-2">
@@ -40,17 +40,28 @@ const Page = () => {
               some health, which empties after eight incorrect guesses.
             </p>
           </div>
-          <div className="bg-white px-6 py-8 md:px-12 md:py-[60px] lg:px-10 rounded-3xl tracking-wider lg:flex lg:flex-col lg:gap-8 desc-card">
-            <p className="text-blue text-2xl md:text-hl text-center md:col-start-1 md:col-end-1 md:row-start-1 md:row-end-3 md:self-center justify-self-start lg:mb-10">
+          <div className="bg-white px-6 py-8 md:px-12 md:py-[60px] lg:px-10 rounded-3xl tracking-wider lg:flex lg:flex-col lg:gap-8 desc-card hover:scale-[101%]">
+            <p className="text-blue-500 text-2xl md:col-start-1 md:col-end-1 md:row-start-1 md:row-end-3 md:self-center justify-self-start lg:mb-10">
               03
             </p>
-            <p className="text-2xl text-start text-dark-navy uppercase lg:text-hm lg:text-center leading-[120%]">
+            <p className="text-2xl text-dark-navy uppercase mx-2 lg:text-center leading-[120%]">
               WIN OR LOSE
             </p>
             <p className="text-[#887DC0] text-base md:text-b leading-[150%] lg:mt-6 lg:text-center row-start-2 row-end-3 col-start-1 col-end-3 md:col-start-2 md:col-end-3 mt-2">
               You win by guessing all the letters in the word before your health
               runs out. If the health bar empties before you guess the word, you
               lose.
+            </p>
+          </div>
+          <div className="bg-white px-6 py-8 md:px-12 md:py-[60px] lg:px-10 rounded-3xl tracking-wider lg:flex lg:flex-col lg:gap-8 desc-card hover:scale-[101%]">
+            <p className="text-blue-500 text-2xl md:col-start-1 md:col-end-1 md:row-start-1 md:row-end-3 md:self-center justify-self-start lg:mb-10">
+              04
+            </p>
+            <p className="text-2xl text-dark-navy uppercase mx-2 lg:text-center leading-[120%]">
+              Points System
+            </p>
+            <p className="text-[#887DC0] text-base md:text-b leading-[150%] lg:mt-6 lg:text-center row-start-2 row-end-3 col-start-1 col-end-3 md:col-start-2 md:col-end-3 mt-2">
+              Points are awarded based on your performance in the game. You gain 10 points for winning each game and lose 5 for losing. Points are displayed in the name bar. Aim to score high and track your progress over time!
             </p>
           </div>
         </div>

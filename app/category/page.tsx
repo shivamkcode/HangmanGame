@@ -57,7 +57,6 @@ const Page = async () => {
               </div>
             </Link>
           ))}
-          Ba
         </div>
       </div>
     </>
